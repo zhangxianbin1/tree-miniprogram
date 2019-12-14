@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+    <mytree model='{{ treeData }}'  bind:clickNode='clickNode' id="myComponent"></mytree>
+</view>
+<view style="text-align:center">选中值为{{objectId}}</view>

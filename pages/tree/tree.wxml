@@ -1,0 +1,17 @@
+<!-- pages/components/mytree/mytree.wxml-->
+<view class="treeClass">
+  <view wx:if='{{model.id!=0}}'>
+    <radio data-itemid='{{ model.id }}' data-parentnodes='{{ model.parentnodes }}' data-childnodes='{{ model.childnodes }}' data-siblingsnodes='{{model.siblingsnodes}}' data-rootnode='{{model.rootNode}}' data-type='radio' wx:if='{{ model.selectshow==1&&model.parentchooseway==0 }}'
+      id="select{{model.index}}" bindtap='clickNode' checked="{{checked}}">
+      <text>{{model.text}}</text>
+    </radio>
+    <checkbox data-itemid='{{ model.id }}' data-parentnodes='{{ model.parentnodes }}' data-childnodes='{{ model.childnodes }}' data-siblingsnodes='{{model.siblingsnodes}}' data-rootnode='{{model.rootNode}}' data-type='checkbox' wx:elif='{{ model.selectshow==1&&model.parentchooseway==1 }}'
+      bindtap='clickNode' checked="{{checked}}">
+      <text id="select{{model.index}}">{{model.text}}</text>
+    </checkbox>
+    <text bindtap='tapItem' data-itemid='{{ model.id }}' wx:else>{{ model.text }}</text>
+  </view>
+  <view style='padding-left: 50rpx;' wx:if='{{ isBranch }}' hidden='{{ !open }}'>
+    <mytree wx:for='{{ model.nodes }}' wx:key='id' model='{{ item }}' id="component{{item.id}}"></mytree>
+  </view>
+</view>
